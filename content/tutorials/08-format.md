@@ -140,6 +140,10 @@ And use it to format numbers `format(81.5)` will return `"82"`
 It also possible to use `io.data2viz.format.formatter` with format string, for example
 `val format = formatter("d")` instead of `val format = formatter(type = Type.DECIMAL_ROUNDED)`
 
+Form
+
+ `[​[fill]align][sign][symbol][0][width][,][.exponent][type]`
+
 | Argument  | Type | Default Value | Description |
 |---|---|---|---|
 | `fill`  | `Char` | `' '` | The char used to fill the spaces (when width is larger than the representation) | 
