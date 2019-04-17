@@ -113,7 +113,7 @@ Each interval have default created object `val timeDay = Day()` You can use it `
 ## Interval functions
 
 | Function  | Result | Description | 
-|---|---|---|---|
+|---|---|---|
 | `floor(date: Date)`  | `Date` |  Returns a new date representing the latest interval boundary date before or equal to date |  |
 | `ceil(date: Date)`  | `Date` |  Returns a new date representing the earliest interval boundary date after or equal to date |  |
 | `round(date: Date)`  | `Date` |  Returns a new date representing the closest interval boundary date to date. |  |
@@ -141,7 +141,7 @@ It also possible to use `io.data2viz.format.formatter` with format string, for e
 `val format = formatter("d")` instead of `val format = formatter(type = Type.DECIMAL_ROUNDED)`
 
 | Argument  | Type | Default Value | Description |
-|---|---|---|---|---|
+|---|---|---|---|
 | `fill`  | `Char` | `' '` | The char used to fill the spaces (when width is larger than the representation) | 
 | `align `  | `Align ` | `Align.RIGTH` | The alignment of the number inside the available space | 
 | `sign `  | `Sign` | `Sign.MINUS` | Defines how positive and negative numbers are represented. | 
@@ -157,7 +157,7 @@ It also possible to use `io.data2viz.format.formatter` with format string, for e
 ### Type
 
 | Type  | Value | Description | 
-|---|---|---|---|
+|---|---|---|
 | `NONE` |  | like `DECIMAL_OR_EXPONENT`, but trim insignificant trailing zeros. |  |
 | `DECIMAL` | `r` | decimal notation, rounded to significant digits.  |
 | `DECIMAL_ROUNDED` | `d` | decimal notation, rounded to integer | | |
@@ -176,7 +176,7 @@ It also possible to use `io.data2viz.format.formatter` with format string, for e
 ### Align
 
 | Align  | Value | Description | 
-|---|---|---|---|
+|---|---|---|
 | `RIGHT`  | `>` | Forces the field to be right-aligned within the available space. (Default behavior). |  | 
 | `LEFT`  | `<` | Forces the field to be left-aligned within the available space. |  | 
 | `CENTER`  | `^` | Forces the field to be centered within the available space |  | 
@@ -247,5 +247,5 @@ Package `io.data2viz.timeFormat` help you format time
 ## Examples
 
 | Specifiers  |  Result |
-|---|---|---|
+|---|---|
 | `H:M:S` | `17:20:37`  |
