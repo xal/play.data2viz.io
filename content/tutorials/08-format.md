@@ -3,6 +3,7 @@
 
 
 ## Text hAlign & vAlign
+hAlign and vAlign **align text related to (x,y) coordinates pivot**. It is not align in parent
 
 | Propoerty  | Class | Values |
 |---|---|---|
@@ -49,9 +50,11 @@ fun main() {
         }
         // to here
     }.bindRendererOnNewCanvas()
-}```
+}
+```
 
 ## vAlign Example
+
 ```height=100
 import io.data2viz.color.*
 import io.data2viz.geom.*
