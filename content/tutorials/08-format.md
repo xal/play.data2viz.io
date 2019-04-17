@@ -3,7 +3,8 @@
 
 
 ## Text hAlign & vAlign
-hAlign and vAlign **align text related to (x,y) coordinates pivot**. It is not align in parent
+
+`io.data2viz.viz.TextNode` contains `hAlign` and `vAlign` properties which can be used for **align text related to (x,y) coordinates pivot**.
 
 | Propoerty  | Class | Values |
 |---|---|---|
@@ -96,3 +97,17 @@ fun main() {
     }.bindRendererOnNewCanvas()
 }
 ```
+
+
+# Time
+
+Package `io.data2viz.time` provides functions for operations with time
+
+# Format numbers
+
+Package `io.data2viz.format` help you format numbers
+
+
+# Format time
+
+Package `io.data2viz.timeFormat` help you format time
