@@ -2,7 +2,7 @@
 
 ## Number format tutorial
 
-[Sketch](https://beta.data2viz.io/yevhenii.zapletin/sketches/xXYMQY)
+[Sketch](https://beta.data2viz.io/yevhenii.zapletin/sketches/xXYMQY/edit)
 
 ```
 import io.data2viz.color.*
@@ -88,7 +88,7 @@ fun main() {
 
 ## Number format table
 
-[Sketch](https://beta.data2viz.io/yevhenii.zapletin/sketches/oPLzrL/)
+[Sketch](https://beta.data2viz.io/yevhenii.zapletin/sketches/oPLzrL/edit)
 
 ```
 import io.data2viz.color.*
@@ -219,7 +219,7 @@ fun main() {
 }
 ```
 ## Time format table
-[Sketch](https://beta.data2viz.io/yevhenii.zapletin/sketches/ypLAxg/)
+[Sketch](https://beta.data2viz.io/yevhenii.zapletin/sketches/ypLAxg/edit)
 
 ```
 import io.data2viz.color.*
