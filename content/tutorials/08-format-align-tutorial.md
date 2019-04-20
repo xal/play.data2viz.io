@@ -1,8 +1,23 @@
 # Format & align tutorial
 
-## Number format tutorial
+This tutorial show how you can format numbers and date/time
+Examples:
 
-[Sketch](https://beta.data2viz.io/yevhenii.zapletin/sketches/xXYMQY/edit)
+- [Example: Number axys formatting](#number_axys_formatting)
+- [Example: Time axys formatting](#time_axys_formatting)
+- [Example: Number formats table](#number_formats_table)
+- [Example: Time formats table](#time_formats_table)
+
+# Number format
+You can format numbers by using `io.data2viz.format.formatter`:
+
+- Create instance `val myFormat = formatter("e")` or `val myFormat = formatter(type = Type.EXPONENT)`
+- Format number `myFormat(1000000.0)`
+
+## Number axys formatting
+
+
+[Sketch and live demo](https://beta.data2viz.io/yevhenii.zapletin/sketches/xXYMQY/edit)
 
 ```
 import io.data2viz.color.*
@@ -86,9 +101,9 @@ fun main() {
 }
 ```
 
-## Number format table
+### Number formats table
 
-[Sketch](https://beta.data2viz.io/yevhenii.zapletin/sketches/oPLzrL/edit)
+[Sketch and live demo](https://beta.data2viz.io/yevhenii.zapletin/sketches/oPLzrL/edit)
 
 ```
 import io.data2viz.color.*
@@ -218,8 +233,122 @@ fun main() {
     }.bindRendererOnNewCanvas()
 }
 ```
-## Time format table
-[Sketch](https://beta.data2viz.io/yevhenii.zapletin/sketches/ypLAxg/edit)
+
+
+## Time format
+
+You can format date and time by using `io.data2viz.timeFormat.format`:
+
+- Create format instance `val myFormat = format("%-m/%-d/%Y")`
+- Format date `myFormat(Date())`
+
+Package `io.data2viz.time ` provides classes, objects & functions for date and time.
+For example:
+
+- Function `Interval.offset(date, step): Date` can be used for creating new date with given offset. `Day().offset(Date(), 5)` will return current date plus 5 days
+- Package contains all date / time intervals like `Day`, `Month`, `Week` etc. Each class have helper object, for example `timeDay.offset` is equal to `Day().offset`
+
+### Time axys formatting
+
+[Sketch and live demo](https://beta.data2viz.io/yevhenii.zapletin/sketches/BGLKxY/edit/)
+
+```
+import io.data2viz.color.*
+import io.data2viz.scale.*
+import io.data2viz.math.*
+import io.data2viz.geom.*
+import io.data2viz.viz.*
+import io.data2viz.time.*
+import io.data2viz.timeFormat.*
+
+fun main() {
+    val vizWidth = 600.0
+    val vizHeight = 100.0
+    val margin = 40.0
+
+    val startDate = date(2000, 1, 1)
+    val endDate = date(2021, 1, 1)
+
+    val dates = timeYear.range(startDate, endDate, step = 2)
+
+    val scale = Scales.Continuous.time {
+        domain = listOf(startDate, endDate)
+        range = listOf(margin, vizWidth - margin)
+    }
+
+    var counter = startDate
+    viz {
+
+
+        size = size(vizWidth, vizHeight)  //<- you need a viz size
+
+        line {
+            x1 = margin
+            x2 = vizWidth - margin
+            y1 = vizHeight / 2
+            y2 = vizHeight / 2
+        }
+
+        val tickLine = line {
+            strokeWidth = 2.0
+            stroke = Colors.Web.black
+            y1 = vizHeight * 0.5
+            y2 = vizHeight * 0.6
+        }
+        val tickText = text {
+            y = vizHeight * 0.7
+            strokeWidth = 2.0
+            fill = Colors.Web.black
+            fontSize = 10.0
+            textAlign = textAlign(TextHAlign.MIDDLE, TextVAlign.MIDDLE)
+        }
+        val tickDaysText = text {
+            y = vizHeight * 0.8
+            strokeWidth = 2.0
+            fill = Colors.Web.black
+            fontSize = 10.0
+            textAlign = textAlign(TextHAlign.MIDDLE, TextVAlign.MIDDLE)
+        }
+
+        dates.forEach {
+            line {
+                x1 = scale(it)
+                y1 = vizHeight * 0.4
+                x2 = scale(it)
+                y2 = vizHeight * 0.5
+                strokeWidth = 2.0
+                stroke = Colors.Web.black
+            }
+            text {
+                x = scale(it)
+                y = vizHeight * 0.3
+                fill = Colors.Web.black
+                fontSize = 10.0
+                textAlign = textAlign(TextHAlign.MIDDLE, TextVAlign.MIDDLE)
+                textContent = format("%-m/%-d/%Y")(it)
+            }
+        }
+        animation {
+            counter = timeDay.offset(counter, step = 3)
+            val currentX = scale(counter)
+            tickLine.x1 = currentX
+            tickLine.x2 = currentX
+            tickText.x = currentX
+            tickText.textContent = format("%B %Y")(counter)
+            
+            tickDaysText.x = currentX
+            tickDaysText.textContent = "Days from start: ${timeDay.count(startDate, counter)}"
+            
+            if(endDate.isBefore(counter)) {
+                counter = startDate
+            }
+        }
+    }.bindRendererOnNewCanvas()
+}
+```
+
+### Time formats table
+[Sketch and live demo](https://beta.data2viz.io/yevhenii.zapletin/sketches/ypLAxg/edit)
 
 ```
 import io.data2viz.color.*
